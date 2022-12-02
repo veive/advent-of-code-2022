@@ -42,15 +42,31 @@ function readFile(input) {
 	var currentelf = 0;
 	var currentcalories=0;
 	var topelf = 0;
-	var topelfcalories = 0;		
+	var topelfcalories = 0;	
+	var secondelf = 0;
+	var secondelfcalories = 0;	
+	var thirdelf = 0;
+	var thirdelfcalories = 0;		
     for(var line = 0; line < inputarray.length-1; line++){
 		var currentint = parseInt(inputarray[line]);
 		console.log("current line:" + line + " --> " + inputarray[line] + " current int is:" + currentint + " current elf is " + currentelf + " calorie count for current elf is " + currentcalories);
 		if (!(currentint > 0)){
-		console.log(" current int is greater than zero!")
-			
+		console.log(" current int is bit greater than zero!")
+			if (currentcalories > thirdelfcalories && currentcalories < secondelfcalories && currentcalories < topelfcalories){
+				thirdelfcalories = currentcalories;
+				thirdelf = currentelf;
+			}
+			if (currentcalories > secondelfcalories && currentcalories < topelfcalories){
+				thirdelfcalories = secondelfcalories;
+				thirdelf = secondelf;
+				secondelfcalories = currentcalories;
+				secondelf = currentelf;
+			}
 			if (currentcalories > topelfcalories){
-
+				thirdelfcalories = secondelfcalories;
+				thirdelf = secondelf;
+				secondelfcalories = topelfcalories;
+				secondelf = topelf;
 				topelfcalories = currentcalories;
 				topelf = currentelf;
 				
