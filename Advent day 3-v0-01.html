@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <title>2022 Advent of Code, Day 2.</title>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <meta name="description" content="" />
+
+  <link rel="stylesheet" type="text/css" href="style.css" />
+
+</head>
+
+<body>
+
+	<h1>2022 Advent of Code, Day 2.</h1>
+	<p>Save your input as a .txt file, and select it using this file selector.</p>
+
+	<input type="file" onchange="readFile(this)">
+
+	<script>
+		function readFile(input) {
+
+			let file = input.files[0];
+			let reader = new FileReader();
+			let score = 0;
+			reader.readAsText(file);
+	
+			reader.onload = function(){
+				let inputarray = reader.result.split(/\r\n|\n/);
+				for( var line = 0; line < inputarray.length; line++){
+					let currentline = inputarray[line];
+					let currentlength = currentline.length;
+					let firsthalf = currentline.slice(0, currentlength/2);
+					let secondhalf = currentline.slice(currentlength/2);
+					let itemfound = false;
+					for( var character = 0; character < firsthalf.length; character++){
+						if (itemfound == false && secondhalf.includes(firsthalf[character])){
+							let founditem = firsthalf[character];
+							if (founditem.includes('a')){
+								score = score+1;
+							} else if (founditem.includes('b')){
+								score = score+2;
+							} else if (founditem.includes('c')){
+								score = score+3;
+							} else if (founditem.includes('d')){
+								score = score+4;
+							} else if (founditem.includes('e')){
+								score = score+5;
+							} else if (founditem.includes('f')){
+								score = score+6;
+							} else if (founditem.includes('g')){
+								score = score+7;
+							} else if (founditem.includes('h')){
+								score = score+8;
+							} else if (founditem.includes('i')){
+								score = score+9;
+							} else if (founditem.includes('j')){
+								score = score+10;
+							} else if (founditem.includes('k')){
+								score = score+11;
+							} else if (founditem.includes('l')){
+								score = score+12;
+							} else if (founditem.includes('m')){
+								score = score+13;
+							} else if (founditem.includes('n')){
+								score = score+14;
+							} else if (founditem.includes('o')){
+								score = score+15;
+							} else if (founditem.includes('p')){
+								score = score+16;
+							} else if (founditem.includes('q')){
+								score = score+17;
+							} else if (founditem.includes('r')){
+								score = score+18;
+							} else if (founditem.includes('s')){
+								score = score+19;
+							} else if (founditem.includes('t')){
+								score = score+20;
+							} else if (founditem.includes('u')){
+								score = score+21;
+							} else if (founditem.includes('v')){
+								score = score+22;
+							} else if (founditem.includes('w')){
+								score = score+23;
+							} else if (founditem.includes('x')){
+								score = score+24;
+							} else if (founditem.includes('y')){
+								score = score+25;
+							} else if (founditem.includes('z')){
+								score = score+26;
+							} else if (founditem.includes('A')){
+								score = score+27;
+							} else if (founditem.includes('B')){
+								score = score+28;
+							} else if (founditem.includes('C')){
+								score = score+29;
+							} else if (founditem.includes('D')){
+								score = score+30;
+							} else if (founditem.includes('E')){
+								score = score+31;
+							} else if (founditem.includes('F')){
+								score = score+32;
+							} else if (founditem.includes('G')){
+								score = score+33;
+							} else if (founditem.includes('H')){
+								score = score+34;
+							} else if (founditem.includes('I')){
+								score = score+35;
+							} else if (founditem.includes('J')){
+								score = score+36;
+							} else if (founditem.includes('K')){
+								score = score+37;
+							} else if (founditem.includes('L')){
+								score = score+38;
+							} else if (founditem.includes('M')){
+								score = score+39;
+							} else if (founditem.includes('N')){
+								score = score+40;
+							} else if (founditem.includes('O')){
+								score = score+41;
+							} else if (founditem.includes('P')){
+								score = score+42;
+							} else if (founditem.includes('Q')){
+								score = score+43;
+							} else if (founditem.includes('R')){
+								score = score+44;
+							} else if (founditem.includes('S')){
+								score = score+45;
+							} else if (founditem.includes('T')){
+								score = score+46;
+							} else if (founditem.includes('U')){
+								score = score+47;
+							} else if (founditem.includes('V')){
+								score = score+48;
+							} else if (founditem.includes('W')){
+								score = score+49;
+							} else if (founditem.includes('X')){
+								score = score+50;
+							} else if (founditem.includes('Y')){
+								score = score+51;
+							} else if (founditem.includes('Z')){
+								score = score+52;
+							}
+							itemfound = true;
+						}
+					}
+				}
+			window.alert("The sum of the item priorities for mishandled items is  " + score);
+			}
+			reader.onerror = function() {
+				console.log("error " + reader.error);
+			};
+		}
+	</script>
+
+</body>
+
+</html>
