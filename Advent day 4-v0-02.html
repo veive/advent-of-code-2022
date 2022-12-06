@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <title>2022 Advent of Code, Day 4.</title>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <meta name="description" content="" />
+
+
+</head>
+
+<body>
+
+	<h1>2022 Advent of Code, Day 4.</h1>
+	<p>Save your input as a .txt file, and select it using this file selector.</p>
+
+	<input type="file" onchange="readFile(this)">
+
+	<script>
+		function readFile(input) {
+
+			let file = input.files[0];
+			let reader = new FileReader();
+			let score = 0;
+			reader.readAsText(file);
+	
+			reader.onload = function(){
+				let inputarray = reader.result.split(/\r\n|\n/);
+				for( var line = 0; line < inputarray.length; line++){
+					let currentline = inputarray[line];
+					let elves = inputarray[line].split(",");
+					if (elves.length > 2){
+						console.log("too many elves found in a pair on line " + line);
+					}
+					let firstelf = elves[0].split("-");
+					let secondelf = elves[1].split("-");
+					
+					function scoreUp(){
+						console.log("Duplicates on line " + line + " contents " + currentline);
+						score++;
+						console.log("Current score is " + score);
+					}
+					
+					if (parseInt(firstelf[0]) >= parseInt(secondelf[0]) && parseInt(firstelf[0]) <= parseInt(secondelf[1])){
+						scoreUp();
+					} else if (parseInt(firstelf[1]) >= parseInt(secondelf[0]) && parseInt(firstelf[1]) <= parseInt(secondelf[1])){
+						scoreUp();
+					}  else if (parseInt(secondelf[0]) >= parseInt(firstelf[0]) && parseInt(secondelf[0]) <= parseInt(firstelf[1])){
+						scoreUp();
+					} else if (parseInt(secondelf[1]) >= parseInt(firstelf[0]) && parseInt(secondelf[1]) <= parseInt(firstelf[1])){
+						scoreUp();
+					}
+				} 
+
+				
+			window.alert("The sum of elf pairs with overlapping assignments is " + score);
+			}
+			reader.onerror = function() {
+				console.log("error " + reader.error);
+			};
+		}
+	</script>
+
+</body>
+
+</html>
