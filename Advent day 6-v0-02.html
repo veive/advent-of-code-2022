@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <title>2022 Advent of Code, Day 6.</title>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <meta name="description" content="" />
+
+
+</head>
+
+<body>
+
+	<h1>2022 Advent of Code, Day 6.</h1>
+	<p>Save your input as a .txt file, and select it using this file selector.</p>
+
+	<input type="file" onchange="readFile(this)">
+
+	<script>
+		function readFile(input) {
+
+			let file = input.files[0];
+			let reader = new FileReader();
+			let score = 0;
+			reader.readAsText(file);
+			
+			function howManyRepeated(str){
+				try{ return str.toLowerCase().split("").sort().join("").match(/(.)\1+/g).length; }
+				catch(e){ return 0; } // if TypeError
+			}
+			
+			reader.onload = function(){
+			<!-- figure out what line the stack numbers are on. -->
+				let inputarray = reader.result;
+				let keyline = 0;
+				let packetfound = false;
+				let firstpacket = 0;
+				
+				for( var i =0; i < inputarray.length-15; i++){
+					let currentstring = inputarray.slice(i, i+14);
+					if (packetfound == false && howManyRepeated(currentstring) == 0){
+						packetfound = true;
+						firstpacket = i+14;
+					}
+				}
+
+			window.alert("the first message found starts on " + firstpacket);
+			}
+			reader.onerror = function() {
+				console.log("error " + reader.error);
+			};
+		}
+	</script>
+
+</body>
+
+</html>
